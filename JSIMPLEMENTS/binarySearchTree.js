@@ -12,40 +12,50 @@ class BST {
   }
 
   add(data) {
+    const node = this.root;
+    if (node == null) {
+      this.root = new Node(data);
+      return data;
+    } else {
+      const searchTree = function (node) {
+        if (data < node.data) {
+          if (node.left == null) {
+            node.left = new Node(data);
+            return data;
+          } else if (node.left != null) {
+            return searchTree(node.left);
+          }
 
-  }
+        } else if (data > node.data) {
+          if (node.right == null) {
+            node.right = new Node(data);
+            return data;
+          } else if (node.right != null) {
+            return searchTree(node.right);
+          }
 
-  remove(data) {
+        } else {
+          return null;
+        }
+      }
 
-  }
-
-  findMin() {
-
-  }
-
-  findMax() {
-
-  }
-
-  find(data) {
-
-  }
-
-  isPresent(data) {
-
+      return searchTree(node);
+    }
   }
 
 
 }
 
 let myBST = new BST();
-myBST.add(10);
-myBST.add(11);
-myBST.add(12);
-myBST.add(6);
-myBST.add(60);
-myBST.add(7);
-myBST.add(21);
-myBST.remove(7);
-console.log(myBST.findMax());
-console.log(myBST.findMax());
+console.log(myBST.add(10));
+console.log(myBST.add(2));
+console.log(myBST.add(11));
+console.log(myBST.add(22));
+console.log(myBST.add(99));
+console.log(myBST.add(33));
+console.log(myBST.add(14));
+console.log(myBST.add(55));
+console.log(myBST.add(12));
+// myBST.remove(7);
+// console.log(myBST.findMax());
+// console.log(myBST.findMax());
