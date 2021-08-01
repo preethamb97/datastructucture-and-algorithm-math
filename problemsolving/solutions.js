@@ -51,13 +51,23 @@ const longestConsecutiveCharacters = (input) => {
       }
     }
   }
-  console.log('maxCharacter', maxCharacter)
-  return myObject;
+  return maxCharacter;
 };
+
+const twoSum = (input, target) => {
+  let myStorage = {};
+  // given numbers return indexes of 2 numbers such that sum add up to 9
+  for (let i = 0; i < input.length; i++) {
+    if (myStorage[input[i]] != undefined) return [myStorage[input[i]], i];
+    myStorage[target - input[i]] = i;
+  }
+}
 
 const main = () => {
   console.log(randomlyReorderArray([1, 2, 3, 4, 5, 6, 7, 8]));
-  console.log(longestConsecutiveCharacters('AABCGGDDBBBEA'))
+  console.log(longestConsecutiveCharacters('AABCGGDDBBBEA'));
+  console.log(twoSum([2, 7, 11, 15], 9));
+
 }
 
 main();
