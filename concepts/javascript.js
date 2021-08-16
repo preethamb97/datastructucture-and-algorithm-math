@@ -69,10 +69,41 @@ const immediatelyInvokedFunctionExpression = () => {
   })();
   testFunc(10);
 }
+
+const callBindApplyUsage = () => {
+  // bind returns a function
+  const cat = {
+    name: 'billi',
+    speak(sound) {
+      return `${this.name} says "${sound}"`
+    },
+  }
+  console.log(cat.speak('Meow'));
+
+  const catSpeak = cat.speak;
+  console.log(catSpeak('Meowww'))
+
+  const catSpeak1 = cat.speak.bind(cat);
+  console.log(catSpeak1('Meowwwwwwww'));
+
+  const catSpeak2 = cat.speak.bind({name: 'tommy'});
+  console.log(catSpeak2('Meowwwwwwwwwwww'));
+
+  const catSpeak4 = cat.speak.bind({name: 'tommy'}, 'Meowwwwwwwwwwwwwwww');
+  console.log(catSpeak4());
+
+  // call will imediatly call the fucntion
+  console.log(catSpeak.call(cat, 'meow1'))
+
+  // apply execepts the arguments in array format
+  console.log(catSpeak.apply(cat, ["meow"]));
+}
+
 const main = () => {
   hoisting();
   stringMethods();
   immediatelyInvokedFunctionExpression();
+  callBindApplyUsage();
 };
 
 main();
