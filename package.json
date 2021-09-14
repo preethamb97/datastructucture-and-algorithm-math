@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ps": "nodemon problemsolving/solutions.js"
+    "ps": "nodemon problemsolving/solutions.js",
+    "topics": "nodemon index.js"
   },
   "repository": {
     "type": "git",
